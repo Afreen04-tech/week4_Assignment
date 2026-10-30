@@ -1,0 +1,92 @@
+[
+  {
+    "id": "TCK-101",
+    "text": "I was charged twice on my credit card for invoice #INV-9021. Please refund the duplicate $49 charge immediately.",
+    "expected_category": "Billing",
+    "expected_priority": "High"
+  },
+  {
+    "id": "TCK-102",
+    "text": "Our production Kubernetes cluster cannot pull images from your private container registry, causing CrashLoopBackOff on all pods.",
+    "expected_category": "Technical",
+    "expected_priority": "Critical"
+  },
+  {
+    "id": "TCK-103",
+    "text": "I forgot my password and my SSO authenticator app was wiped when I got a new phone. I cannot log in.",
+    "expected_category": "Account",
+    "expected_priority": "Medium"
+  },
+  {
+    "id": "TCK-104",
+    "text": "Could you please send us the updated W-9 form and annual tax compliance receipt for our accounts payable department?",
+    "expected_category": "Billing",
+    "expected_priority": "Low"
+  },
+  {
+    "id": "TCK-105",
+    "text": "Your API endpoint /v2/orders is returning HTTP 500 Internal Server Error for all POST requests containing unicode characters in the payload.",
+    "expected_category": "Technical",
+    "expected_priority": "High"
+  },
+  {
+    "id": "TCK-106",
+    "text": "We need to invite 3 new junior data scientists to our enterprise workspace and assign them read-only permissions.",
+    "expected_category": "Account",
+    "expected_priority": "Low"
+  },
+  {
+    "id": "TCK-107",
+    "text": "Our payment gateway subscription renewed at the full enterprise tier instead of the contracted 25% non-profit discount rate.",
+    "expected_category": "Billing",
+    "expected_priority": "Medium"
+  },
+  {
+    "id": "TCK-108",
+    "text": "Memory leak detected in your Python SDK client version 2.4.1. The client leaks socket descriptors under high async connection volumes.",
+    "expected_category": "Technical",
+    "expected_priority": "Medium"
+  },
+  {
+    "id": "TCK-109",
+    "text": "CRITICAL SECURITY ALERT: An unauthorized employee who left the company two months ago is still listed as an Organization Owner in our portal.",
+    "expected_category": "Account",
+    "expected_priority": "Critical"
+  },
+  {
+    "id": "TCK-110",
+    "text": "We received an unexpected overage invoice for 10 million vector search queries, but our analytics dashboard shows only 200,000 requests.",
+    "expected_category": "Billing",
+    "expected_priority": "High"
+  },
+  {
+    "id": "TCK-111",
+    "text": "Database read replicas in region eu-west-1 have fallen 45 minutes out of replication sync with the primary writer instance.",
+    "expected_category": "Technical",
+    "expected_priority": "Critical"
+  },
+  {
+    "id": "TCK-112",
+    "text": "Please assist in transferring the ownership of tenant workspace ACME-PROD from john.doe@acme.com to sarah.connor@acme.com.",
+    "expected_category": "Account",
+    "expected_priority": "Medium"
+  },
+  {
+    "id": "TCK-113",
+    "text": "We want to update our primary corporate credit card before the current card expires at the end of next month.",
+    "expected_category": "Billing",
+    "expected_priority": "Low"
+  },
+  {
+    "id": "TCK-114",
+    "text": "Frontend dashboard CSS stylesheet fails to render on Safari browser version 17.2, causing button misalignment.",
+    "expected_category": "Technical",
+    "expected_priority": "Low"
+  },
+  {
+    "id": "TCK-115",
+    "text": "URGENT: Our primary account administrator has been locked out after 3 consecutive failed MFA attempts during an active customer incident.",
+    "expected_category": "Account",
+    "expected_priority": "Critical"
+  }
+]

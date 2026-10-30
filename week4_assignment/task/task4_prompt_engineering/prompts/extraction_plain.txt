@@ -1,0 +1,4 @@
+Please read this resume profile and give me the person's name, their list of technical skills, and how many years of experience they have. Format it as json.
+
+Profile:
+{profile_text}

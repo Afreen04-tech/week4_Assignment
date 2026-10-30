@@ -1,0 +1,39 @@
+"problem_id","topic","question","ground_truth","prompt_direct","result_without_cot","correct_without_cot","error_mode_without_cot","prompt_cot","result_with_cot","correct_with_cot"
+"PROB-01","Net Rate & Capacity","A water tank has an inlet pipe filling it at 40 liters/minute and a drain emptying it at 15 liters/minute. If the tank currently holds 350 liters and its total capacity is 1,500 liters, how many minutes will it take to fill the tank completely?","46 minutes","A water tank has an inlet pipe filling it at 40 liters/minute and a drain emptying it at 15 liters/minute. If the tank currently holds 350 liters and its total capacity is 1,500 liters, how many minutes will it take to fill the tank completely? Answer directly with the final number.","The tank will be completely full in 37.5 minutes.","False","Naively divided total capacity (1500) by 40 lpm without accounting for baseline water (350L) or drain outflow (15 lpm).","A water tank has an inlet pipe filling it at 40 liters/minute and a drain emptying it at 15 liters/minute. If the tank currently holds 350 liters and its total capacity is 1,500 liters, how many minutes will it take to fill the tank completely? Think step by step and explain your reasoning before stating the final answer.","Let's solve this step by step:
+1. Current water volume = 350 liters; Total tank capacity = 1,500 liters.
+2. Remaining volume needed to fill = 1,500 - 350 = 1,150 liters.
+3. Net filling rate = Inlet rate - Drain rate = 40 - 15 = 25 liters/minute.
+4. Time needed = 1,150 liters / 25 liters/minute = 46 minutes.
+Therefore, it will take 46 minutes.","True"
+"PROB-02","Set Theory & Overlap","A company has 80 employees. 45 speak Spanish, 35 speak French, and 12 speak both languages. How many employees speak neither Spanish nor French?","12 employees","A company has 80 employees. 45 speak Spanish, 35 speak French, and 12 speak both languages. How many employees speak neither Spanish nor French? Answer directly with the final number.","0 employees speak neither language.","False","Added 45 + 35 = 80 and assumed all employees were accounted for, failing to subtract the 12 double-counted multilingual employees.","A company has 80 employees. 45 speak Spanish, 35 speak French, and 12 speak both languages. How many employees speak neither Spanish nor French? Think step by step and explain your reasoning before stating the final answer.","Let's break this down step by step using the principle of inclusion-exclusion:
+1. Total employees = 80.
+2. Employees speaking at least one language: |S ∪ F| = |S| + |F| - |S ∩ F|.
+3. |S ∪ F| = 45 + 35 - 12 = 80 - 12 = 68 employees speak Spanish or French.
+4. Employees speaking neither = Total - |S ∪ F| = 80 - 68 = 12 employees.
+Final answer: 12 employees.","True"
+"PROB-03","Harmonic Mean Speed","A delivery van travels 120 miles to a client at 60 mph, and returns along the same 120-mile route during evening rush hour at 30 mph. What is the average speed of the van for the entire round trip?","40 mph","A delivery van travels 120 miles to a client at 60 mph, and returns along the same 120-mile route during evening rush hour at 30 mph. What is the average speed of the van for the entire round trip? Answer directly with the final number.","The average speed for the round trip is 45 mph.","False","Fell into the classic arithmetic mean trap: (60 + 30) / 2 = 45 mph, ignoring that the vehicle spent twice as long driving at 30 mph.","A delivery van travels 120 miles to a client at 60 mph, and returns along the same 120-mile route during evening rush hour at 30 mph. What is the average speed of the van for the entire round trip? Think step by step and explain your reasoning before stating the final answer.","Let's calculate average speed step by step (Average Speed = Total Distance / Total Time):
+1. Total distance = 120 miles outbound + 120 miles return = 240 miles.
+2. Outbound travel time = 120 miles / 60 mph = 2.0 hours.
+3. Return travel time = 120 miles / 30 mph = 4.0 hours.
+4. Total travel time = 2.0 + 4.0 = 6.0 hours.
+5. Average speed = 240 miles / 6.0 hours = 40.0 mph.
+Answer: 40 mph.","True"
+"PROB-04","Weighted Defect Expectation","A factory produces 500 microchips daily. Machine A produces 60% of them with a 2% defect rate, and Machine B produces the remaining 40% with a 5% defect rate. How many defective microchips are produced each day in total?","16 microchips","A factory produces 500 microchips daily. Machine A produces 60% of them with a 2% defect rate, and Machine B produces the remaining 40% with a 5% defect rate. How many defective microchips are produced each day in total? Answer directly with the final number.","There are approximately 18 defective microchips produced daily.","False","Approximate mental estimation error without individual batch partitioning.","A factory produces 500 microchips daily. Machine A produces 60% of them with a 2% defect rate, and Machine B produces the remaining 40% with a 5% defect rate. How many defective microchips are produced each day in total? Think step by step and explain your reasoning before stating the final answer.","Step-by-step breakdown:
+1. Total production = 500 chips.
+2. Machine A production = 500 * 0.60 = 300 chips.
+   Defective chips from A = 300 * 0.02 = 6 chips.
+3. Machine B production = 500 * 0.40 = 200 chips.
+   Defective chips from B = 200 * 0.05 = 10 chips.
+4. Total defective chips = 6 (from A) + 10 (from B) = 16 chips.
+Final answer: 16 defective microchips.","True"
+"PROB-05","Algebraic Partitioning","Three siblings—Liam, Maya, and Noah—are splitting $240. Liam receives twice as much as Maya, and Noah receives $20 less than Maya. How much money does Liam receive?","$130","Three siblings—Liam, Maya, and Noah—are splitting $240. Liam receives twice as much as Maya, and Noah receives $20 less than Maya. How much money does Liam receive? Answer directly with the final number.","Maya gets $65, so Liam gets $120.","False","Correctly deduced Maya's base ($65) in memory but suffered token-emission calculation error (2 * 65 != 120).","Three siblings—Liam, Maya, and Noah—are splitting $240. Liam receives twice as much as Maya, and Noah receives $20 less than Maya. How much money does Liam receive? Think step by step and explain your reasoning before stating the final answer.","Let's formulate and solve the linear system step by step:
+1. Let Maya's share be M.
+2. Liam receives twice as much: L = 2M.
+3. Noah receives $20 less than Maya: N = M - 20.
+4. Total sum: L + M + N = 240
+   (2M) + M + (M - 20) = 240
+   4M - 20 = 240
+   4M = 260 => M = 65.
+5. Liam's share: L = 2 * M = 2 * 65 = $130.
+Verification: Liam ($130) + Maya ($65) + Noah ($45) = $240.
+Answer: $130.","True"

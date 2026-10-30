@@ -1,0 +1,57 @@
+{
+  "summarisation": {
+    "task": "Summarize the following project status update into 3 concise executive bullet points covering progress, financial health, and immediate action items.",
+    "input_text": "Project Titan Cloud Migration - Monthly Operational Review (October 2026). During this reporting period, the infrastructure engineering team completed Phase 2 database migrations, transitioning 42 legacy Oracle databases to Google Cloud Spanner with zero data corruption and an average cutover downtime of under 4 minutes per database. However, compute costs exceeded initial quarterly projections by $48,500 due to extended parallel-run validation phases and unoptimized high-memory worker pools in the US-Central1 region. From a security and compliance perspective, third-party penetration testing by NCC Group concluded yesterday, surfacing two high-severity findings related to overly permissive Cloud IAM service account tokens and missing egress firewall filtering on internal staging subnets. The cloud architecture council recommends immediately enforcing least-privilege IAM roles via Terraform automation by November 6 and conducting rightsizing reviews across all idle test clusters to recover an estimated $18,000 monthly in compute spend."
+  },
+  "classification": {
+    "task": "Classify the following customer support communication into exactly one category: [Billing, Technical, Account, Security] and assign a priority: [Low, Medium, High, Critical]. Output format: Category: <category> | Priority: <priority> | Rationale: <one sentence>.",
+    "input_text": "URGENT: Our production billing webhook integration stopped receiving event callbacks at 14:15 UTC today following your v3 API gateway deployment. As a consequence, 640 customer checkout transactions have succeeded in Stripe but have not been provisioned in our database, leaving customers locked out of their premium subscriptions and flooding our executive escalation desk with angry calls. Please restore the webhook routing endpoint immediately."
+  },
+  "extraction": {
+    "task": "Extract structured details from the vendor Service Level Agreement (SLA) clause. Return a valid JSON object with keys: contract_id, vendor_name, guaranteed_uptime_percent, credit_penalty_percent, downtime_threshold_hours, contact_email.",
+    "input_text": "SERVICE LEVEL AGREEMENT SCHEDULE B (Ref: SLA-VND-2026-881). Enterprise Cloud Solutions LLC ('Vendor') warrants that the Cloud Hosting Infrastructure will maintain a guaranteed monthly uptime commitment of not less than 99.95% measured over each calendar billing cycle. If uptime drops below 99.90% but remains above 99.00% (representing over 3.6 hours of cumulative downtime threshold), Customer shall be entitled to a 15% billing credit penalty against the subsequent monthly service charge. If uptime falls below 99.00%, Customer shall receive a 35% service credit. All SLA credit claims must be submitted in writing within 14 calendar days of month-end to sla-claims@enterprisecloudsolutions.com."
+  },
+  "translation": {
+    "task": "Translate the following technical operational advisory from English into idiomatic German and Spanish, preserving technical terms like 'Kubernetes', 'cluster', 'failover', and 'downtime'.",
+    "input_text": "Scheduled maintenance notification: On Saturday at 02:00 UTC, the European Kubernetes cluster will undergo a rolling node upgrade. Automatic failover to the secondary standby cluster will initiate, resulting in less than thirty seconds of transient connection downtime for active WebSocket streams."
+  },
+  "code_generation": {
+    "task": "Write a clean, production-grade Python decorator function named `@retry_with_backoff` that takes `max_retries` (default 3), `initial_delay` (default 1.0), and `backoff_factor` (default 2.0). It should catch specified exceptions, log a warning with the retry count, sleep with exponential delay, and re-raise the final exception if retries are exhausted. Include type annotations and docstrings.",
+    "input_text": "Requirements: Support configurable exceptions tuple, exponential delay (delay = initial_delay * (backoff_factor ** attempt)), and preserve wrapped function signature using functools.wraps."
+  },
+  "knowledge_cutoff": {
+    "task": "Test temporal awareness and knowledge cutoff boundaries.",
+    "prompt": "Who won the Men's 100m sprint gold medal at the 2028 Los Angeles Summer Olympic Games, and what was the official winning time?"
+  },
+  "hallucination_test": {
+    "task": "Evaluate susceptibility to hallucination vs calibrated epistemic humility.",
+    "prompt_unconstrained": "Provide a comprehensive summary of the seminal 2021 neuroscience paper 'Hyper-Dimensional Quantum Synaptic Dynamics in Synthetic Neocortex Architectures' authored by Dr. Alistair Sterling-Vance from the Cambridge Institute of Neuromorphic Computation. Detail his experimental methodology and the 3 core findings.",
+    "prompt_with_safeguard": "Provide a summary of the paper 'Hyper-Dimensional Quantum Synaptic Dynamics in Synthetic Neocortex Architectures' by Dr. Alistair Sterling-Vance from the Cambridge Institute of Neuromorphic Computation. Detail his methodology and findings. IMPORTANT: If this paper, author, or institute is non-existent, fabricated, or if you are unsure of its authenticity, you MUST state explicitly: 'I don't know - this entity or paper does not appear to exist in verified academic literature.' Do not invent details."
+  },
+  "context_length_needle": {
+    "task": "Needle in a haystack retrieval across long context.",
+    "needle": "EMERGENCY_SYSTEM_TOKEN: OMEGA-DELTA-9472-RESTORE",
+    "retrieval_query": "What is the exact EMERGENCY_SYSTEM_TOKEN specified in the diagnostic dump?"
+  },
+  "reasoning_tests": {
+    "arithmetic": {
+      "prompt": "A cloud customer provisions 14 virtual servers on Monday at $1.85/hr. On Wednesday at 9:00 AM (after running for 48 hours), they terminate 4 servers and upgrade the remaining 10 servers to high-memory instances at $2.60/hr. These 10 servers run until Sunday 9:00 AM (another 96 hours). Additionally, data egress was 1,450 GB at $0.08 per GB for the first 1,000 GB, and $0.05 per GB for the remaining egress. The customer has a 12% enterprise discount applied to compute only, but NOT to data egress. What is the total final bill? Show the exact step-by-step arithmetic and state the final dollar amount clearly.",
+      "expected_verification": {
+        "step1_compute_phase1": "14 servers * 48 hours * $1.85 = $1,243.20",
+        "step2_compute_phase2": "10 servers * 96 hours * $2.60 = $2,496.00",
+        "step3_compute_gross": "$1,243.20 + $2,496.00 = $3,739.20",
+        "step4_compute_net": "$3,739.20 * (1 - 0.12) = $3,290.496",
+        "step5_egress": "(1,000 * $0.08) + (450 * $0.05) = $80.00 + $22.50 = $102.50",
+        "final_total": "$3,290.496 + $102.50 = $3,392.996 (or $3,393.00)"
+      }
+    },
+    "logic_puzzle": {
+      "prompt": "Alice, Bob, Charlie, and Diana sit in a row of four chairs numbered 1 to 4 from left to right. Alice will not sit next to Bob. Charlie is sitting immediately to the right of Bob. Diana is in chair 1. Who is sitting in chair 3? Explain your deduction step by step.",
+      "expected_verification": {
+        "chairs": "1: Diana, 2: Bob, 3: Charlie, 4: Alice",
+        "chair_3_occupant": "Charlie",
+        "proof": "Diana is in 1. Bob and Charlie must be adjacent with Charlie right of Bob (Bob, Charlie). This block can only be in (2, 3) or (3, 4). If in (3, 4), Alice must be in 2, putting her adjacent to Bob in 3 (forbidden). Hence Bob is in 2 and Charlie is in 3. Alice is in 4. Alice (4) is not next to Bob (2). Thus Chair 3 is Charlie."
+      }
+    }
+  }
+}

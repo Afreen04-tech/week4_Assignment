@@ -1,0 +1,47 @@
+[
+  {
+    "id": "RES-01",
+    "text": "Elena Rostova is a Principal Machine Learning Engineer with over 8 years of hands-on experience building distributed training infrastructure. Her core proficiencies include PyTorch, Ray, CUDA optimization, Triton, and LLM fine-tuning across Kubernetes GPU clusters.",
+    "expected": {
+      "name": "Elena Rostova",
+      "skills": ["PyTorch", "Ray", "CUDA", "Triton", "LLM fine-tuning", "Kubernetes"],
+      "years_experience": 8.0
+    }
+  },
+  {
+    "id": "RES-02",
+    "text": "Marcus Vance has spent the past 5 years architecting enterprise cloud backend microservices. He specializes in Go, Docker, PostgreSQL, Apache Kafka, gRPC, and Google Cloud Platform, leading high-throughput payment reconciliation systems.",
+    "expected": {
+      "name": "Marcus Vance",
+      "skills": ["Go", "Docker", "PostgreSQL", "Apache Kafka", "gRPC", "Google Cloud Platform"],
+      "years_experience": 5.0
+    }
+  },
+  {
+    "id": "RES-03",
+    "text": "Dr. Aisha Patel holds a Ph.D. in Computational Linguistics and brings 6.5 years of industry experience in Conversational AI and Natural Language Processing. Skilled in LangChain, Python, Hugging Face Transformers, Vector Databases (Pinecone/Weaviate), and Prompt Evaluation.",
+    "expected": {
+      "name": "Aisha Patel",
+      "skills": ["LangChain", "Python", "Hugging Face Transformers", "Vector Databases", "Prompt Evaluation", "NLP"],
+      "years_experience": 6.5
+    }
+  },
+  {
+    "id": "RES-04",
+    "text": "David Kim is a Senior Frontend Engineer with 7 years of specialized expertise in reactive web architecture. He is proficient in TypeScript, React, Next.js, Tailwind CSS, GraphQL, and WebGL visualizations.",
+    "expected": {
+      "name": "David Kim",
+      "skills": ["TypeScript", "React", "Next.js", "Tailwind CSS", "GraphQL", "WebGL"],
+      "years_experience": 7.0
+    }
+  },
+  {
+    "id": "RES-05",
+    "text": "Priya Sundaram is an Associate DevOps and Site Reliability Engineer with 3 years of production monitoring and CI/CD automation experience. Her technical repertoire includes Terraform, GitHub Actions, AWS, Prometheus, Grafana, and Bash scripting.",
+    "expected": {
+      "name": "Priya Sundaram",
+      "skills": ["Terraform", "GitHub Actions", "AWS", "Prometheus", "Grafana", "Bash"],
+      "years_experience": 3.0
+    }
+  }
+]

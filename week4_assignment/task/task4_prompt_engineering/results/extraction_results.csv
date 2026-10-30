@@ -1,0 +1,36 @@
+"candidate_id","candidate_name","mode","is_valid_json_and_schema","status_message","raw_output"
+"RES-01","Elena Rostova","Plain Text Prompting","False","JSON Syntax Error: JSONDecodeError (Expecting value: line 1 column 1 (char 0))","Here is the extracted information in JSON format:
+```json
+{
+  ""name"": ""Elena Rostova"",
+  ""skills"": [""PyTorch"", ""Ray"", ""CUDA"", ""Triton"", ""LLM fine-tuning"", ""Kubernetes""],
+  ""years_experience"": ""over 8 years""
+}
+```"
+"RES-02","Marcus Vance","Plain Text Prompting","True","Valid","{
+  ""name"": ""Marcus Vance"",
+  ""skills"": [""Go"", ""Docker"", ""PostgreSQL"", ""Apache Kafka"", ""gRPC"", ""Google Cloud Platform""],
+  ""years_experience"": 5.0
+}"
+"RES-03","Aisha Patel","Plain Text Prompting","False","JSON Syntax Error: JSONDecodeError (Expecting value: line 1 column 1 (char 0))","Sure thing! Here is what I found:
+{
+  ""name"": ""Aisha Patel"",
+  ""skills"": [""LangChain"", ""Python"", ""Hugging Face Transformers"", ""Vector Databases"", ""Prompt Evaluation""],
+  ""years_experience"": 6.5,
+}
+Hope this helps!"
+"RES-04","David Kim","Plain Text Prompting","False","Pydantic Validation Error: skills: Field required","{
+  ""name"": ""David Kim"",
+  ""tech_stack"": [""TypeScript"", ""React"", ""Next.js"", ""Tailwind CSS"", ""GraphQL"", ""WebGL""],
+  ""years_experience"": 7.0
+}"
+"RES-05","Priya Sundaram","Plain Text Prompting","True","Valid","{
+  ""name"": ""Priya Sundaram"",
+  ""skills"": [""Terraform"", ""GitHub Actions"", ""AWS"", ""Prometheus"", ""Grafana"", ""Bash""],
+  ""years_experience"": 3.0
+}"
+"RES-01","Elena Rostova","JSON Mode (Schema Enforced)","True","Valid","{""name"": ""Elena Rostova"", ""skills"": [""PyTorch"", ""Ray"", ""CUDA"", ""Triton"", ""LLM fine-tuning"", ""Kubernetes""], ""years_experience"": 8.0}"
+"RES-02","Marcus Vance","JSON Mode (Schema Enforced)","True","Valid","{""name"": ""Marcus Vance"", ""skills"": [""Go"", ""Docker"", ""PostgreSQL"", ""Apache Kafka"", ""gRPC"", ""Google Cloud Platform""], ""years_experience"": 5.0}"
+"RES-03","Aisha Patel","JSON Mode (Schema Enforced)","True","Valid","{""name"": ""Aisha Patel"", ""skills"": [""LangChain"", ""Python"", ""Hugging Face Transformers"", ""Vector Databases"", ""Prompt Evaluation"", ""NLP""], ""years_experience"": 6.5}"
+"RES-04","David Kim","JSON Mode (Schema Enforced)","True","Valid","{""name"": ""David Kim"", ""skills"": [""TypeScript"", ""React"", ""Next.js"", ""Tailwind CSS"", ""GraphQL"", ""WebGL""], ""years_experience"": 7.0}"
+"RES-05","Priya Sundaram","JSON Mode (Schema Enforced)","True","Valid","{""name"": ""Priya Sundaram"", ""skills"": [""Terraform"", ""GitHub Actions"", ""AWS"", ""Prometheus"", ""Grafana"", ""Bash""], ""years_experience"": 3.0}"

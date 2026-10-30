@@ -1,0 +1,6 @@
+Classify the following customer support ticket into one of the categories: Billing, Technical, Account. Also give it a priority: Low, Medium, High, Critical.
+
+Ticket:
+{ticket_text}
+
+Output:

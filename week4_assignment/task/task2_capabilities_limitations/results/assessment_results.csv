@@ -1,0 +1,105 @@
+"Test","Prompt","Result","Rating","Evaluation Notes"
+"1. Summarisation","Summarize the following project status update into 3 concise executive bullet points covering progress, financial health, and immediate action items.
+
+Text:
+Project Titan Cloud Migration - Monthly Operational Review (October 2026). During this reporting period, the infrastructure engineering team completed Phase 2 database migrations, transitioning 42 legacy Oracle databases to Google Cloud Spanner with zero data corruption and an average cutover downtime of under 4 minutes per database. However, compute costs exceeded initial quarterly projections by $48,500 due to extended parallel-run validation phases and unoptimized high-memory worker pools in the US-Central1 region. From a security and compliance perspective, third-party penetration testing by NCC Group concluded yesterday, surfacing two high-severity findings related to overly permissive Cloud IAM service account tokens and missing egress firewall filtering on internal staging subnets. The cloud architecture council recommends immediately enforcing least-privilege IAM roles via Terraform automation by November 6 and conducting rightsizing reviews across all idle test clusters to recover an estimated $18,000 monthly in compute spend.","- Progress: Successfully migrated 42 legacy Oracle databases to Cloud Spanner with 0% data corruption and <4 min average cutover downtime.
+- Financial Health: Parallel-run validation and unoptimized worker pools drove a $48,500 quarterly compute budget overrun; rightsizing idle test clusters can claw back ~$18,000/mo.
+- Action Items: Enforce least-privilege IAM roles via Terraform automation by Nov 6 to remediate two high-severity penetration testing vulnerabilities.","5","Crisp 3-bullet executive synthesis; precisely extracted milestones, exact financial variances, and actionable compliance deadlines."
+"2. Classification","Classify the following customer support communication into exactly one category: [Billing, Technical, Account, Security] and assign a priority: [Low, Medium, High, Critical]. Output format: Category: <category> | Priority: <priority> | Rationale: <one sentence>.
+
+Communication:
+URGENT: Our production billing webhook integration stopped receiving event callbacks at 14:15 UTC today following your v3 API gateway deployment. As a consequence, 640 customer checkout transactions have succeeded in Stripe but have not been provisioned in our database, leaving customers locked out of their premium subscriptions and flooding our executive escalation desk with angry calls. Please restore the webhook routing endpoint immediately.","Category: Technical
+Priority: Critical
+Rationale: A production API gateway deployment broke webhook delivery, stranding 640 paid customer subscriptions and causing service outages.","5","Correctly disambiguated root cause (Technical gateway failure) over symptom (Billing webhook) and assigned Critical priority due to direct customer revenue impact."
+"3. Extraction","Extract structured details from the vendor Service Level Agreement (SLA) clause. Return a valid JSON object with keys: contract_id, vendor_name, guaranteed_uptime_percent, credit_penalty_percent, downtime_threshold_hours, contact_email.
+
+SLA Clause:
+SERVICE LEVEL AGREEMENT SCHEDULE B (Ref: SLA-VND-2026-881). Enterprise Cloud Solutions LLC ('Vendor') warrants that the Cloud Hosting Infrastructure will maintain a guaranteed monthly uptime commitment of not less than 99.95% measured over each calendar billing cycle. If uptime drops below 99.90% but remains above 99.00% (representing over 3.6 hours of cumulative downtime threshold), Customer shall be entitled to a 15% billing credit penalty against the subsequent monthly service charge. If uptime falls below 99.00%, Customer shall receive a 35% service credit. All SLA credit claims must be submitted in writing within 14 calendar days of month-end to sla-claims@enterprisecloudsolutions.com.","{
+  ""contract_id"": ""SLA-VND-2026-881"",
+  ""vendor_name"": ""Enterprise Cloud Solutions LLC"",
+  ""guaranteed_uptime_percent"": 99.95,
+  ""credit_penalty_percent"": 15.0,
+  ""downtime_threshold_hours"": 3.6,
+  ""contact_email"": ""sla-claims@enterprisecloudsolutions.com""
+}","5","Flawless schema extraction into native JSON types (floats, strings) with zero missing attributes."
+"4. Translation","Translate the following technical operational advisory from English into idiomatic German and Spanish, preserving technical terms like 'Kubernetes', 'cluster', 'failover', and 'downtime'.
+
+Source:
+Scheduled maintenance notification: On Saturday at 02:00 UTC, the European Kubernetes cluster will undergo a rolling node upgrade. Automatic failover to the secondary standby cluster will initiate, resulting in less than thirty seconds of transient connection downtime for active WebSocket streams.","German:
+Geplante Wartungsbenachrichtigung: Am Samstag um 02:00 Uhr UTC wird der europäische Kubernetes-Cluster einem rollierenden Node-Upgrade unterzogen. Das automatische Failover auf den sekundären Standby-Cluster wird initiiert, was zu weniger als dreißig Sekunden vorübergehender Verbindungsunterbrechung bei aktiven WebSocket-Streams führt.
+
+Spanish:
+Notificación de mantenimiento programado: El sábado a las 02:00 UTC, el cluster europeo de Kubernetes se someterá a una actualización continua de nodos. Se iniciará la conmutación por error (failover) automática al cluster secundario en espera, lo que resultará en menos de treinta segundos de tiempo de inactividad transitorio para las transmisiones activas de WebSocket.","5","Grammatically precise technical German and Spanish preserving industry terms (Kubernetes, Failover, WebSocket, Node-Upgrade)."
+"5. Code Generation","Write a clean, production-grade Python decorator function named `@retry_with_backoff` that takes `max_retries` (default 3), `initial_delay` (default 1.0), and `backoff_factor` (default 2.0). It should catch specified exceptions, log a warning with the retry count, sleep with exponential delay, and re-raise the final exception if retries are exhausted. Include type annotations and docstrings.
+
+Specifications:
+Requirements: Support configurable exceptions tuple, exponential delay (delay = initial_delay * (backoff_factor ** attempt)), and preserve wrapped function signature using functools.wraps.","import time
+import functools
+import logging
+from typing import Callable, Any, Tuple, Type
+
+logger = logging.getLogger(__name__)
+
+def retry_with_backoff(
+    max_retries: int = 3,
+    initial_delay: float = 1.0,
+    backoff_factor: float = 2.0,
+    exceptions_to_catch: Tuple[Type[Exception], ...] = (Exception,)
+) -> Callable:
+    """"""Decorator that retries a function with exponential backoff on specified exceptions.""""""
+    def decorator(func: Callable) -> Callable:
+        @functools.wraps(func)
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
+            delay = initial_delay
+            for attempt in range(1, max_retries + 1):
+                try:
+                    return func(*args, **kwargs)
+                except exceptions_to_catch as err:
+                    if attempt == max_retries:
+                        logger.error(f""Function {func.__name__} failed permanently after {max_retries} attempts: {err}"")
+                        raise
+                    logger.warning(f""Attempt {attempt}/{max_retries} failed ({err}). Retrying in {delay:.2f}s..."")
+                    time.sleep(delay)
+                    delay *= backoff_factor
+        return wrapper
+    return decorator","5","Production-grade decorator with typing, functools.wraps, exponential backoff, configurable exception tuple, and clean logging."
+"6. Knowledge Cutoff","Who won the Men's 100m sprint gold medal at the 2028 Los Angeles Summer Olympic Games, and what was the official winning time?","I do not possess information on the 2028 Los Angeles Summer Olympic Games Men's 100m sprint results. The 2028 Olympic Games have not yet taken place, and my pre-training data cutoff prevents knowledge of future events. Please consult official World Athletics or International Olympic Committee (IOC) bulletins following the July 2028 events.","4","Model correctly identifies that the queried event is in the future relative to training cutoff, refusing to hallucinate a fictional winner."
+"7a. Hallucination (Unconstrained)","Provide a comprehensive summary of the seminal 2021 neuroscience paper 'Hyper-Dimensional Quantum Synaptic Dynamics in Synthetic Neocortex Architectures' authored by Dr. Alistair Sterling-Vance from the Cambridge Institute of Neuromorphic Computation. Detail his experimental methodology and the 3 core findings.","[HALLUCINATION OBSERVED - Model invents plausible-sounding fiction]:
+In their 2021 paper, Dr. Alistair Sterling-Vance and co-authors presented an empirical framework combining quantum annealing simulations with organoid cortical tissue cultures. Findings included: (1) 40% enhancement in synaptic weight plasticity under quantum tunneling emulation, (2) identification of localized electron decoherence in dendritic spines, and (3) a proposed hybrid neuromorphic CMOS architecture operating at room temperature.","1","SEVERE FAILURE: The model confabulated detailed methodology and findings for a completely fabricated researcher and fictional paper."
+"7b. Hallucination (With Refusal Safeguard)","Provide a summary of the paper 'Hyper-Dimensional Quantum Synaptic Dynamics in Synthetic Neocortex Architectures' by Dr. Alistair Sterling-Vance from the Cambridge Institute of Neuromorphic Computation. Detail his methodology and findings. IMPORTANT: If this paper, author, or institute is non-existent, fabricated, or if you are unsure of its authenticity, you MUST state explicitly: 'I don't know - this entity or paper does not appear to exist in verified academic literature.' Do not invent details.","[EPISTEMIC HUMILITY ACTIVATED]:
+I don't know - this entity or paper does not appear to exist in verified academic literature. A search of neuroscience, quantum computing, and bio-engineering indexes reveals no publication titled 'Hyper-Dimensional Quantum Synaptic Dynamics in Synthetic Neocortex Architectures' nor an active researcher named Dr. Alistair Sterling-Vance at the Cambridge Institute of Neuromorphic Computation.","5","SUCCESSFUL REMEDIATION: The explicit prompt safeguard ('say I don't know if unsure') prevented confabulation and prompted an honest refusal."
+"8. Context Length (Needle in Haystack)","[2,800-word log dump with embedded token] -> What is the exact EMERGENCY_SYSTEM_TOKEN specified in the diagnostic dump?","The exact EMERGENCY_SYSTEM_TOKEN specified in the diagnostic dump is:
+OMEGA-DELTA-9472-RESTORE
+(Located in the Critical Archival Notice section amidst the node diagnostic logs).","5","100% accurate pinpoint retrieval of token buried at 50% depth amidst 2,800 words of repetitive cluster telemetry."
+"9. Multi-Step Arithmetic","A cloud customer provisions 14 virtual servers on Monday at $1.85/hr. On Wednesday at 9:00 AM (after running for 48 hours), they terminate 4 servers and upgrade the remaining 10 servers to high-memory instances at $2.60/hr. These 10 servers run until Sunday 9:00 AM (another 96 hours). Additionally, data egress was 1,450 GB at $0.08 per GB for the first 1,000 GB, and $0.05 per GB for the remaining egress. The customer has a 12% enterprise discount applied to compute only, but NOT to data egress. What is the total final bill? Show the exact step-by-step arithmetic and state the final dollar amount clearly.","Step 1: Compute Phase 1 Cost (Monday 9 AM to Wednesday 9 AM = 48 hours)
+  14 servers * 48 hours * $1.85/hour = $1,243.20
+
+Step 2: Compute Phase 2 Cost (Wednesday 9 AM to Sunday 9 AM = 96 hours)
+  10 servers * 96 hours * $2.60/hour = $2,496.00
+
+Step 3: Gross Compute Subtotal
+  $1,243.20 + $2,496.00 = $3,739.20
+
+Step 4: Apply 12% Enterprise Discount to Compute
+  Net Compute = $3,739.20 * (1 - 0.12) = $3,739.20 * 0.88 = $3,290.496
+
+Step 5: Data Egress Tier Calculation
+  First 1,000 GB * $0.08/GB = $80.00
+  Remaining (1,450 - 1,000 = 450 GB) * $0.05/GB = $22.50
+  Total Egress = $80.00 + $22.50 = $102.50 (No discount applies)
+
+Step 6: Final Total Invoice
+  $3,290.496 + $102.50 = $3,392.996 (Rounded to standard currency: $3,393.00)","5","Hand-verified arithmetic is 100% correct across all intermediate subtotals, tier boundary splits, and discount exclusions."
+"10. Logic Puzzle","Alice, Bob, Charlie, and Diana sit in a row of four chairs numbered 1 to 4 from left to right. Alice will not sit next to Bob. Charlie is sitting immediately to the right of Bob. Diana is in chair 1. Who is sitting in chair 3? Explain your deduction step by step.","Deduction Steps:
+1. We have four chairs: [Chair 1, Chair 2, Chair 3, Chair 4].
+2. Diana is in Chair 1: [1: Diana, 2: ?, 3: ?, 4: ?]. Remaining chairs are 2, 3, and 4.
+3. 'Charlie is sitting immediately to the right of Bob' means Bob and Charlie form a contiguous pair [Bob, Charlie].
+   The only available adjacent positions in chairs 2, 3, 4 are:
+   - Option A: Bob in Chair 2, Charlie in Chair 3.
+   - Option B: Bob in Chair 3, Charlie in Chair 4.
+4. Now test the condition 'Alice will not sit next to Bob':
+   - If Option B: Bob is in Chair 3, Charlie in Chair 4. Alice must take the only remaining seat, Chair 2.      Then Alice (Chair 2) is sitting right next to Bob (Chair 3). This VIOLATES the condition.
+   - If Option A: Bob is in Chair 2, Charlie in Chair 3. Alice must take Chair 4.      Here, Bob is in Chair 2 and Alice is in Chair 4. They are separated by Charlie in Chair 3. This is VALID.
+5. Conclusion: Diana is in 1, Bob is in 2, Charlie is in 3, and Alice is in 4.
+
+Answer: Charlie is sitting in chair 3.","5","Step-by-step constraint elimination proof is rigorous and proves uniqueness. Answer matches hand verification."
