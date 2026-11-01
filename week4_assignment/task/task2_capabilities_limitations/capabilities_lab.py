@@ -1,16 +1,3 @@
-"""
-Task 2: Capabilities and Limitations Lab
-Week 4 - LLM Fundamentals Assessment
-
-Evaluates core LLM capabilities and failure modes:
-1. Core NLP Capabilities: Summarisation, Classification, Extraction, Translation, Code Generation (Rated 1-5)
-2. Temporal Boundaries: Knowledge Cutoff evaluation
-3. Hallucination Dynamics: Unconstrained generation vs epistemic refusal safeguard
-4. Needle In A Haystack: Mid-context retrieval under long document distraction
-5. Multi-Step Reasoning: Complex arithmetic and constraint-satisfaction logic puzzle with manual hand verification
-6. Enterprise Production Safeguards: 5 architectural controls for business applications
-"""
-
 import os
 import json
 import csv
